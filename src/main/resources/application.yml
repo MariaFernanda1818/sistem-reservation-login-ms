@@ -1,8 +1,4 @@
-endpoints:
-  base-login: /login
-  login:
-    iniciar: /iniciar
-    registrar: /registrar
+
 jwt:
   expiration-time-ms: 86400000
   secret-key: NXRR+SVc/iI0UXHhZHOBMv92pTgFVHqPZoNlNV6onIo=
@@ -24,3 +20,4 @@ spring:
 server:
   servlet:
     context-path: /api/v1
+  port: 8002
