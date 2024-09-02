@@ -5,9 +5,11 @@ import com.gov.sistem.reservation.commons.entity.ClienteEntity;
 import com.gov.sistem.reservation.commons.util.enums.InicialesCodEnum;
 import com.gov.sistem.reservation.commons.util.helper.Utilidades;
 import com.gov.sistem.reservation.commons.util.mapper.ClienteMapper;
+import com.gov.sistem.reservation.login.dto.ResponseTokenDTO;
 import com.gov.sistem.reservation.login.dto.RespuestaGeneralDTO;
 import com.gov.sistem.reservation.login.jpa.repository.ClienteRepository;
 import com.gov.sistem.reservation.login.service.IRegistrarService;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
@@ -43,6 +45,7 @@ public class RegistrarService implements IRegistrarService {
      * @return Respuesta que contiene el token JWT o un mensaje de error.
      */
     @Override
+    @Transactional
     public RespuestaGeneralDTO registrar(ClienteDTO cliente) {
         RespuestaGeneralDTO respuestaGeneralDTO = new RespuestaGeneralDTO();
 
@@ -67,7 +70,9 @@ public class RegistrarService implements IRegistrarService {
 
             // Genera el token JWT
             String token = jwtService.getToken(user);
-            respuestaGeneralDTO.setData(token);
+            ResponseTokenDTO response = new ResponseTokenDTO();
+            response.setToken(token);
+            respuestaGeneralDTO.setData(response);
             respuestaGeneralDTO.setStatus(HttpStatus.CREATED);
         } catch (Exception e) {
             log.error("Error al registrar el cliente: {}", e.getMessage(), e);

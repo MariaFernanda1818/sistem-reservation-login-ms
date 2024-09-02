@@ -39,8 +39,8 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 // Configura las reglas de autorización de las solicitudes
                 .authorizeHttpRequests(authRequest ->
-                        authRequest.requestMatchers("/login/**").permitAll() // Permite acceso a la URL /login/** sin autenticación
-                                .anyRequest().authenticated() // Requiere autenticación para cualquier otra solicitud
+                        authRequest
+                                .requestMatchers("/**").permitAll() // Permite acceso a la URL /login/** sin autenticación
                 )
                 // Configura el manejo de sesiones
                 .sessionManagement(sessionManagement ->
