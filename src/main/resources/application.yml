@@ -1,4 +1,9 @@
-
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /doc/swagger-ui.html
+  paths-to-match: /login/**
 jwt:
   expiration-time-ms: 86400000
   secret-key: NXRR+SVc/iI0UXHhZHOBMv92pTgFVHqPZoNlNV6onIo=

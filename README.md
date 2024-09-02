@@ -3,21 +3,25 @@
 ## Requisitos
 
 1. **Java Development Kit (JDK) 22**: Asegúrate de tener JDK 22 instalado en tu máquina local.
-2. **Maven**: Debes tener Maven instalado.
-
+2. **Maven**: Verifica que Maven esté instalado.
 3. **PostgreSQL**: Asegúrate de tener PostgreSQL instalado. Las credenciales predeterminadas son:
    - **URL**: `jdbc:postgresql://localhost:5432/postgres`
    - **Username**: `postgres`
    - **Password**: `123456789`
 
-   Si usas credenciales diferentes, actualiza la configuración de los microservicios en tu proyecto en consecuencia.
+   Si usas credenciales diferentes, actualiza la configuración de los microservicios en tu proyecto en consecuencia. El esquema SQL utilizado es `public`, y las tablas se crean automáticamente mediante Hibernate.
 
-   El esquema SQL utilizado es `public`, y las tablas se crean automáticamente mediante Hibernate.
+## Acceso al Swagger
+
+- **Swagger para Microservicio Login**: [http://localhost:8003/api/v1/doc/swagger-ui/index.html](http://localhost:8003/api/v1/doc/swagger-ui/index.html)
+- **Swagger para Microservicio Reservation**: [http://localhost:8001/api/v1/doc/swagger-ui/index.html#/servicios-controller](http://localhost:8001/api/v1/doc/swagger-ui/index.html#/servicios-controller)
+
+Si no se encuentran expuestos los respectivos endpoints en Swagger, asegúrate de que la siguiente ruta esté presente en la barra de búsqueda de Swagger: `/api/v1/v3/api-docs`.
 
 ## Orden de Arranque de los Microservicios
 
 1. **Microservicio Commons**:
-   - **Descripción**: Este microservicio es responsable de crear la base de datos y de proporcionar funcionalidades globales para el sistema.
+   - **Descripción**: Responsable de crear la base de datos y proporcionar funcionalidades globales para el sistema.
    - **Acción**: Inicia este servicio primero.
    - **Post-inicio**: Después de iniciar el microservicio Commons, ejecuta `mvn clean install` para generar una dependencia local de este servicio.
 
@@ -36,6 +40,6 @@
 
 ## Notas
 
-- Si sigues este orden y estos pasos, el proyecto debería iniciarse sin errores.
+- Siguiendo este orden y estos pasos, el proyecto debería iniciarse sin errores.
 - Asegúrate de que todos los microservicios estén funcionando correctamente y revisa los logs en caso de problemas.
 
