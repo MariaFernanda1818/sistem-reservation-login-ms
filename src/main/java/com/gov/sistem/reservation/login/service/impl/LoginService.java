@@ -2,6 +2,7 @@ package com.gov.sistem.reservation.login.service.impl;
 
 import com.gov.sistem.reservation.commons.dto.ClienteDTO;
 import com.gov.sistem.reservation.commons.util.mapper.ClienteMapper;
+import com.gov.sistem.reservation.login.dto.ResponseTokenDTO;
 import com.gov.sistem.reservation.login.dto.RespuestaGeneralDTO;
 import com.gov.sistem.reservation.login.jpa.repository.ClienteRepository;
 import com.gov.sistem.reservation.login.service.ILoginService;
@@ -66,7 +67,10 @@ public class LoginService implements ILoginService {
             );
             // Genera el token JWT
             String token = jwtService.getToken(user);
-            respuestaGeneralDTO.setData(token);
+            ResponseTokenDTO response = new ResponseTokenDTO();
+            response.setToken(token);
+            respuestaGeneralDTO.setData(response);
+            respuestaGeneralDTO.setMensaje("Sesión iniciada!");
             respuestaGeneralDTO.setStatus(HttpStatus.OK);
         } catch (UsernameNotFoundException e) {
             respuestaGeneralDTO.setData(null);
