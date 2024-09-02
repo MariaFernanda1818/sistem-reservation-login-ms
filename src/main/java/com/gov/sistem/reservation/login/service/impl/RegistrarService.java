@@ -9,6 +9,7 @@ import com.gov.sistem.reservation.login.dto.ResponseTokenDTO;
 import com.gov.sistem.reservation.login.dto.RespuestaGeneralDTO;
 import com.gov.sistem.reservation.login.jpa.repository.ClienteRepository;
 import com.gov.sistem.reservation.login.service.IRegistrarService;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
@@ -44,6 +45,7 @@ public class RegistrarService implements IRegistrarService {
      * @return Respuesta que contiene el token JWT o un mensaje de error.
      */
     @Override
+    @Transactional
     public RespuestaGeneralDTO registrar(ClienteDTO cliente) {
         RespuestaGeneralDTO respuestaGeneralDTO = new RespuestaGeneralDTO();
 

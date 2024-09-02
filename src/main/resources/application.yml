@@ -17,4 +17,4 @@ spring:
 server:
   servlet:
     context-path: /api/v1
-  port: 8002
+  port: 8003

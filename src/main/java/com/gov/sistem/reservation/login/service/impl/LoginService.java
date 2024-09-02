@@ -69,6 +69,7 @@ public class LoginService implements ILoginService {
             String token = jwtService.getToken(user);
             ResponseTokenDTO response = new ResponseTokenDTO();
             response.setToken(token);
+            response.setCliente(clienteDTO);
             respuestaGeneralDTO.setData(response);
             respuestaGeneralDTO.setMensaje("Sesión iniciada!");
             respuestaGeneralDTO.setStatus(HttpStatus.OK);
